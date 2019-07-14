@@ -1,2 +1,22 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
+
+require 'optparse'
+
+class Option
+  def initialize(argv)
+    opt = OptionParser.new
+    @override = false
+    opt.on('-o', '--override') {|v| @override = true}
+    files = opt.parse(argv)
+  end
+  attr_reader :override
+end
+
+
+
+def main
+  opt = Option.new(ARGV)
+end
+
+main if __FILE__ == $0
