@@ -6,7 +6,7 @@ load './../rubocop-correct-config'
 
 # [documents](https://www.rubydoc.info/gems/minitest)
 
-class Test < MiniTest::Test
+class TestOption < MiniTest::Test
   def setup
     # nothing to do
   end
