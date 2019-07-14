@@ -2,7 +2,6 @@
 
 require 'rubygems'
 require 'minitest/autorun'
-puts Dir.pwd
 load './../rubocop-correct-config'
 
 # [documents](https://www.rubydoc.info/gems/minitest)
