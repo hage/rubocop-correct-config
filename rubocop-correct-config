@@ -28,7 +28,6 @@ class Option
     @override = false
     opt.on('-o', '--override') {|v| @override = true}
     @filename = opt.parse(argv)[0] || DEFAULT_CONFIG_FILE
-
   end
   attr_reader :override, :filename
 end
