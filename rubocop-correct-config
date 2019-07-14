@@ -3,6 +3,23 @@
 
 require 'optparse'
 
+module Analyze
+  # detect_* 系メソッドは配列を返し、その配列には以下のものが入っている
+  # 0: 置換前
+  # 1: 置換後
+  #
+  # ただし、処理できなかった時は nil を返す。
+
+  def self.detect_wrong_name_space(opt, line)
+    if line =~ %r{#{opt.filename}: (\w+/(\w+)) has the wrong namespace - should be (\w+)}
+      [$1, "#{$3}/#{$2}"]
+    else
+      nil
+    end
+  end
+
+end
+
 class Option
   DEFAULT_CONFIG_FILE = '.rubocop.yml'
 

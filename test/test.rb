@@ -38,3 +38,20 @@ class Test < MiniTest::Test
     assert_equal opt.filename, 'config'
   end
 end
+
+class TestAnalyze < MiniTest::Test
+  def setup
+    @opt = Option.new([])
+  end
+
+  def teardown
+    # nothing to do
+  end
+
+  def test_detect_wrong_name_space
+    assert_nil Analyze.detect_wrong_name_space(@opt, '')
+    r = Analyze.detect_wrong_name_space(@opt, '/Users/tura/Dropbox/project/OfficeGC/mitaka-peace/.rubocop.yml: Style/AccessModifierIndentation has the wrong namespace - should be Layout')
+    assert_equal 'Style/AccessModifierIndentation', r[0]
+    assert_equal 'Layout/AccessModifierIndentation', r[1]
+  end
+end
