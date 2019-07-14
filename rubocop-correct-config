@@ -4,13 +4,16 @@
 require 'optparse'
 
 class Option
+  DEFAULT_CONFIG_FILE = '.rubocop.yml'
+
   def initialize(argv)
     opt = OptionParser.new
     @override = false
     opt.on('-o', '--override') {|v| @override = true}
-    files = opt.parse(argv)
+    @filename = opt.parse(argv)[0] || DEFAULT_CONFIG_FILE
+
   end
-  attr_reader :override
+  attr_reader :override, :filename
 end
 
 

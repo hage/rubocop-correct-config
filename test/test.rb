@@ -28,4 +28,14 @@ class Test < MiniTest::Test
     opt = Option.new(['--override'])
     assert_equal opt.override, true
   end
+
+  def test_default_config_file
+    opt = Option.new([])
+    assert_equal opt.filename, Option::DEFAULT_CONFIG_FILE
+  end
+
+  def test_specify_config_file
+    opt = Option.new(['config'])
+    assert_equal opt.filename, 'config'
+  end
 end
