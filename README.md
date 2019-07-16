@@ -1,5 +1,7 @@
 # RuboCop Correct Config
 
+[![Build Status](https://travis-ci.org/hage/rubocop-correct-config.svg?branch=master)](https://travis-ci.org/hage/rubocop-correct-config)
+
 ## usage
 
 ``` shellsession
