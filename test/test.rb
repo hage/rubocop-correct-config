@@ -70,4 +70,11 @@ class TestAnalyze < MiniTest::Test
     assert_equal(r[0], 'Style/SingleSpaceBeforeFirstArg')
     assert_equal(r[1], 'Layout/SpaceBeforeFirstArg')
   end
+
+  def test_detect_removed_cop
+    assert_nil Analyze.detect_removed_cop(@opt, '')
+    r = Analyze.detect_removed_cop(@opt, 'The `Style/SpaceBeforeModifierKeyword` cop has been removed. Please use `Layout/SpaceAroundKeyword` instead.')
+    assert_equal(r[0], 'Style/SpaceBeforeModifierKeyword')
+    assert_equal(r[1], 'Layout/SpaceAroundKeyword')
+  end
 end

@@ -30,6 +30,12 @@ module Analyze
       [m[1], m[2]]
     end
   end
+
+  def self.detect_removed_cop(_opt, line)
+    %r{The `(\w+/\w+)` cop has been removed\. Please use `(\w+/\w+)` instead.}.match(line) do |m|
+      [m[1], m[2]]
+    end
+  end
 end
 
 class Option
