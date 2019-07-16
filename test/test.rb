@@ -63,4 +63,11 @@ class TestAnalyze < MiniTest::Test
     assert_includes(r[1], 'Style/TrailingCommaInArrayLiteral')
     assert_includes(r[1], 'Style/TrailingCommaInHashLiteral')
   end
+
+  def test_detect_renamed_cop
+    assert_nil Analyze.detect_renamed_cop(@opt, '')
+    r = Analyze.detect_renamed_cop(@opt, 'The `Style/SingleSpaceBeforeFirstArg` cop has been renamed to `Layout/SpaceBeforeFirstArg`.')
+    assert_equal(r[0], 'Style/SingleSpaceBeforeFirstArg')
+    assert_equal(r[1], 'Layout/SpaceBeforeFirstArg')
+  end
 end
