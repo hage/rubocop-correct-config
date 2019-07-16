@@ -11,10 +11,8 @@ module Analyze
   # ただし、処理できなかった時は nil を返す。
 
   def self.detect_wrong_name_space(opt, line)
-    if line =~ %r{#{opt.filename}: (\w+/(\w+)) has the wrong namespace - should be (\w+)}
-      [$1, "#{$3}/#{$2}"]
-    else
-      nil
+    %r{#{opt.filename}: (\w+/(\w+)) has the wrong namespace - should be (\w+)}.match(line) do |m|
+      [m[1], "#{m[3]}/#{m[2]}"]
     end
   end
 
