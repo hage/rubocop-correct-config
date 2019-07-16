@@ -26,7 +26,7 @@ class Option
   def initialize(argv)
     opt = OptionParser.new
     @override = false
-    opt.on('-o', '--override') {|v| @override = true}
+    opt.on('-o', '--override') {@override = true}
     @filename = opt.parse(argv)[0] || DEFAULT_CONFIG_FILE
   end
   attr_reader :override, :filename
@@ -35,7 +35,7 @@ end
 
 
 def main
-  opt = Option.new(ARGV)
+  _opt = Option.new(ARGV)
 end
 
 main if __FILE__ == $0
