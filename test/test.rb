@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'rubygems'
 require 'minitest/autorun'
-load './../rubocop-correct-config'
+
+load File.join(__dir__, '../rubocop-correct-config')
 
 # [documents](https://www.rubydoc.info/gems/minitest)
 
