@@ -54,4 +54,13 @@ class TestAnalyze < MiniTest::Test
     assert_equal 'Style/AccessModifierIndentation', r[0]
     assert_equal 'Layout/AccessModifierIndentation', r[1]
   end
+
+  def test_detect_no_longer_exists
+    assert_nil Analyze.detect_no_longer_exists(@opt, '')
+    r = Analyze.detect_no_longer_exists(@opt, 'Error: The `Style/TrailingComma` cop no longer exists. Please use `Style/TrailingCommaInArguments`, `Style/TrailingCommaInArrayLiteral`, and/or `Style/TrailingCommaInHashLiteral` instead.')
+    assert_equal 'Style/TrailingComma', r[0]
+    assert_includes(r[1], 'Style/TrailingCommaInArguments')
+    assert_includes(r[1], 'Style/TrailingCommaInArrayLiteral')
+    assert_includes(r[1], 'Style/TrailingCommaInHashLiteral')
+  end
 end

@@ -18,6 +18,14 @@ module Analyze
     end
   end
 
+  def self.detect_no_longer_exists(_opt, line)
+    %r{^Error: The `(\w+/\w+)` cop no longer exists. Please use (.+?) instead\.}.match(line) do |m|
+      origin = m[1]
+      mods_line = m[2]
+      mods = mods_line.split(%r{\s*, (?:and/or)?\s*}).map{|x| x.strip[1..-2]}
+      [origin, mods]
+    end
+  end
 end
 
 class Option
