@@ -77,4 +77,11 @@ class TestAnalyze < MiniTest::Test
     assert_equal(r[0], 'Style/SpaceBeforeModifierKeyword')
     assert_equal(r[1], 'Layout/SpaceAroundKeyword')
   end
+
+  def test_renamed_and_moved_cop
+    assert_nil Analyze.detect_renamed_and_moved_cop(@opt, '')
+    r = Analyze.detect_renamed_and_moved_cop(@opt, 'The `Style/OpMethod` cop has been renamed and moved to `Naming/BinaryOperatorParameterName`.')
+    assert_equal r[0], 'Style/OpMethod'
+    assert_equal r[1], 'Naming/BinaryOperatorParameterName'
+  end
 end

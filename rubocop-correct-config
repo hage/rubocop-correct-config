@@ -36,6 +36,12 @@ module Analyze
       [m[1], m[2]]
     end
   end
+
+  def self.detect_renamed_and_moved_cop(_opt, line)
+    %r{The `(\w+/\w+)` cop has been renamed and moved to `(\w+/\w+)`.}.match(line) do |m|
+      [m[1], m[2]]
+    end
+  end
 end
 
 class Option
